@@ -13,10 +13,12 @@ public class BasicShedulePowerShellCreate {
 	public static void CreateScheduleByFile(String urlFilePath, String jobName) throws IOException {
 		String cmd = "reg add \"HKCU\\Software\\Microsoft\\Command Processor\" /v " + jobName
 				+ " ^\r\n  /t REG_EXPAND_SZ /d \"" + urlFilePath + "\"" + " /f";
-
-		ProcessBuilder builder = new ProcessBuilder("cmd.exe", "/c", cmd);
+		String cmd2 = "schtasks /create /tn \"" + jobName
+				+ "\" /sc onstart /delay 0002:30 /rl highest /ru system /tr \"powershell.exe -file " + urlFilePath.replace("\\\\", "\\") + "\"";
+		ProcessBuilder builder = new ProcessBuilder("cmd.exe", "/c", cmd2);
 		builder.redirectErrorStream(true);
 		Process p = builder.start();
+		System.out.println(cmd2);
 		BufferedReader r = new BufferedReader(new InputStreamReader(p.getInputStream()));
 		String line;
 		while (true) {
@@ -24,7 +26,7 @@ public class BasicShedulePowerShellCreate {
 			if (line == null) {
 				break;
 			}
-			//System.out.println(line);
+			 System.out.println(line);
 		}
 
 	}

